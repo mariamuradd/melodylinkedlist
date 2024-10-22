@@ -4,7 +4,7 @@
  * Class: Button
  * Description: A generic button object. If you want to spice it up by adding things like changing colors on mouse press, changing fonts,
  * etc. etc. feel free dudes, but this is NOT required.
- * 
+ * something
  * To use -- inherit from this class & implement in the 'onPressed' method
  * 
  */
