@@ -7,7 +7,7 @@ public class LinkedListMelodyManager extends MelodyManager implements Drawable{
     
     static FileSystem sys = FileSystems.getDefault();
     static String prependPath = "mid" + sys.getSeparator();
-    static String appendType = "mid" + sys.getSeparator();
+    static String appendType = ".mid";
 
     String[] files = {"motive1Am", "motive2Am", "motive3Am", "motive1E", "motive2E", "motive3E"};
 
@@ -30,5 +30,13 @@ public class LinkedListMelodyManager extends MelodyManager implements Drawable{
     @Override
     public void draw() {
         playMelodies();
+    }
+
+    void print()
+    {
+        for( MelodyPlayer player : players )
+        {
+            System.out.println( player.getMelody().toString() );
+        }
     }
 }

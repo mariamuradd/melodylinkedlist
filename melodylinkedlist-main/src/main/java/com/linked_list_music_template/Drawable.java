@@ -1,7 +1,7 @@
 package com.linked_list_music_template;
 
 /*
- * c2024 Oct Courtney Brown 
+ * c2024 Oct Maria Murad
  * 
  * Interface: Drawable
  * Description: Anything that should be called in the Processing draw() function

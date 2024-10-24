@@ -1,5 +1,5 @@
 /*
-* c2017-2024 Courtney Brown 
+* Maria Murad using template from Dr. Courtney Brown 
 * Class: Main Class for Hello World for CC3 Class Projects streaming MIDI, etc.
 * Description: Demonstration of MIDI file manipulations, etc. & 'MelodyPlayer' sequencer, 2024 - add processing/interactivity
 * 
@@ -48,6 +48,11 @@ public class App extends PApplet {
         manager.setup();
         addNodes();
         setupButtons();
+        addMelodyDraw();
+        //melody.print();
+
+        manager.print();
+
         //in another function, setup your linked list and add it to the draws.
     }
 

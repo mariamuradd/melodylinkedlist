@@ -190,6 +190,11 @@ public class MelodyPlayer {
 		playingTimes.clear();
 	}
 
+	ArrayList<Integer> getMelody()
+	{
+		return melody;
+	}
+
 	//have we reached the end of the melody?
 	boolean atEndOfMelody()
 	{

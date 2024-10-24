@@ -1,8 +1,7 @@
 /*
- * Name: Maria Murad
- * Project Name: "Particle Engine"
- * Date: October 10th, 2024
- * Description: This class manages a collection of melodies represented by MIDI files. Allows for the playback of multiple melodies, including the ability to play specific melodies and check if a melody is done playing.
+ * c3 10/24/2024 Maria Murad
+ * Class: Melody Manager
+ * Description (CHANGE!) This class manages a collection of melodies represented by MIDI files. Allows for the playback of multiple melodies, including the ability to play specific melodies and check if a melody is done playing.
  */
 
  package com.linked_list_music_template;
@@ -25,13 +24,8 @@ public class MelodyManager {
 
         for (MelodyPlayer player : players) {
             player.play();
+           // System.out.println(player.getMelody().size());
         }
-    }
-
-    // plays a specific melody by index in the players list
-    public void playSpecifiMelody(int index) {
-          players.get(index).play();
-        // players.get(index).reset();
     }
  
     // checks if a specific melody has reached the end
@@ -55,6 +49,7 @@ public class MelodyManager {
                                                       // reference. Every. single. one.
 
         int noteCount = midiNotes.get(index).getPitchArray().size(); // get the number of notes in the midi file
+        System.out.println("noteCount:"+ noteCount );
 
         // NOTE: for assert() to work, you need to change the Java extension settings to
         // run with assertions enabled
@@ -65,12 +60,17 @@ public class MelodyManager {
         players.get(index).setMelody(midiNotes.get(index).getPitchArray());
         players.get(index).setRhythm(midiNotes.get(index).getRhythmArray());
         players.get(index).setStartTimes(midiNotes.get(index).getStartTimeArray());
-        players.get(index).reset();
+        players.get(index).setToEnd();
     }
 
     // resets and starts the melody playback from the specified index
     void start(int index) {
         players.get(index).reset();
+        System.out.println("melody manager start");
+    }
+
+    boolean atEnd(int index){
+        return players.get(index).atEndOfMelody();
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * c2024 Oct Courtney Brown 
+ * Maria Murad; Courtney Brown 
  * 
  * Class: Button
  * Description: A generic button object. If you want to spice it up by adding things like changing colors on mouse press, changing fonts,
