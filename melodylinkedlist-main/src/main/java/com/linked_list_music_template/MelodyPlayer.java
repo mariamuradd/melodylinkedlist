@@ -1,6 +1,5 @@
 /*
- * c2017-c2023 Courtney Brown 
- * 
+ * c3 10/28/24 Maria Murad
  * Class: MelodyPlayer
  * Description: Sends a melody of midi notes to an external player/midi channel, revised 2024 for polyphonic playing
  * 

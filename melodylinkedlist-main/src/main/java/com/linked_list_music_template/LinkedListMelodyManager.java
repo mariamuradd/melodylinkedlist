@@ -1,3 +1,9 @@
+/*
+ * c3 10/24/2024 Maria Murad
+ * Class: LinkedListMelodyManager
+ * Description (CHANGE!) This class manages a collection of melodies represented by MIDI files. Allows for the playback of multiple melodies, including the ability to play specific melodies and check if a melody is done playing.
+ */
+
 package com.linked_list_music_template;
 
 import java.nio.file.FileSystem;

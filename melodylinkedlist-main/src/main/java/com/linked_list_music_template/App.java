@@ -74,7 +74,36 @@ public class App extends PApplet {
         //helpful variables for formatting -- use or not. if you don't use, delete.
         float centerX = width/2; 
         float centerY = height/2; 
-        float spacer = 8;
+        float spacer = 50;
+
+        PlayButton play = new PlayButton(this, melody, centerX, centerY);
+        draws.add(play);
+        presses.add(play);
+
+        StopButton stop = new StopButton(this, melody, centerX, centerY + spacer);
+        draws.add(stop);
+        presses.add(stop);
+
+        LoopButton loop = new LoopButton(this, melody, centerX, centerY + 2 * spacer);
+        draws.add(loop);
+        presses.add(loop);
+
+        //fix spacing
+        WeaveButton weave = new WeaveButton(this, melody, TOP, centerY, spacer);
+        draws.add(weave);
+        presses.add(weave);
+
+        //fix spacing
+        SpecialButton custom = new SpecialButton(this, melody, centerY, spacer);
+        draws.add(custom);
+        presses.add(custom);
+
+        //fix spacing
+        UnitTestButton test = new UnitTestButton(this, melody, centerY, spacer);
+        draws.add(test);
+        presses.add(test);
+
+
     }
 
     //doing all the setup stuff for Processing
@@ -100,8 +129,5 @@ public class App extends PApplet {
         }
     }
 
-    public void keyPressed(){
-        melody.start();
-    }
 }
  
