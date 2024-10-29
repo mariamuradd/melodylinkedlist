@@ -1,8 +1,8 @@
 /*
+ * c3 10/28/2024
  * Maria Murad using a template by Dr. Courtney Brown
  * Class: LinkedListMelody
- * Description: [you fill in]
- * 
+ * Description: This class is a linked list structure for managing and playing sequences of melody nodes from MelodyNode. It also supports common operations like insertion, deletion, playback with looping, reversing, and adding nodes after specific melodies.
  */
 
 package com.linked_list_music_template;
@@ -89,8 +89,9 @@ public class LinkedListMelody implements Drawable {
             System.out.println("No melody to play.");
             return;
         }
-
-        if (curMelodyNode != null) {
+        curMelodyNode = header;
+        System.out.println(curMelodyNode);
+        while(curMelodyNode != null ) {
             // Check if we’re at the end of the list
             if (curMelodyNode.atEnd()) {
                 if (isLooping) {
@@ -183,7 +184,7 @@ public class LinkedListMelody implements Drawable {
     // melody played in draw
     public void draw() {
         if (header != null) {
-            play();
+          // play();
         }
     }
 

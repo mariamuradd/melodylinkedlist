@@ -1,7 +1,7 @@
 /*
  * c3 10/28/2024 Maria Murad
- * Class: Melody Manager
- * Description (CHANGE!) This class manages a collection of melodies represented by MIDI files. Allows for the playback of multiple melodies, including the ability to play specific melodies and check if a melody is done playing.
+ * Class: MelodyManager
+ * Description: This class loads and manages multiple MIDI files for playback, providing control over melody playback, rhythm, and end-of-melody detection
  */
 
  package com.linked_list_music_template;

@@ -1,11 +1,8 @@
 /*
- * Maria Murad; Courtney Brown 
- * 
+ * c3 10/28/2024
+ * Maria Murad using template by Dr.Courtney Brown
  * Class: Button
- * Description: A generic button object. If you want to spice it up by adding things like changing colors on mouse press, changing fonts,
- * etc. etc. feel free dudes, but this is NOT required.
- * something ladd
- * To use -- inherit from this class & implement in the 'onPressed' method
+ * Description: A generic, clickable button object. It has customizable dimensions including color, label text, etc.
  * 
  */
 

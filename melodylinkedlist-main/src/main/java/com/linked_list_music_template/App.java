@@ -89,12 +89,18 @@ public class App extends PApplet {
         presses.add(loop);
 
         //fix spacing
-        WeaveButton weave = new WeaveButton(this, melody, TOP, centerY, spacer);
+        WeaveButton weave = new WeaveButton(this, melody, 1, centerX, spacer+50);
         draws.add(weave);
         presses.add(weave);
+        WeaveButton weave1 = new WeaveButton(this, melody, 2, centerX, spacer+90);
+        draws.add(weave1);
+        presses.add(weave1);
+        WeaveButton weave2 = new WeaveButton(this, melody, 3, centerX, spacer+150);
+        draws.add(weave2);
+        presses.add(weave2);
 
         //fix spacing
-        SpecialButton custom = new SpecialButton(this, melody, centerY, spacer);
+        SpecialButton custom = new SpecialButton(this, melody, centerY, spacer*2+centerY+40);
         draws.add(custom);
         presses.add(custom);
 

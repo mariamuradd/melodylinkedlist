@@ -1,7 +1,7 @@
 /*
  * c3 10/28/24 Maria Murad
  * Class: MelodyPlayer
- * Description: Sends a melody of midi notes to an external player/midi channel, revised 2024 for polyphonic playing
+ * Description: The class class manages the playback of a MIDI melody, sending note sequences with accurate timing and polyphony to an external MIDI bus for performance.
  * 
  */
 

@@ -6,6 +6,9 @@
  * PlayButton - play the MelodyLinkedList
  * StopButton - stop the MelodyLinkedList
  * LoopButton - loop the MelodyLinkedList
+ * WeaveButton - 3 options to choose from
+ * SpecialButton - custom button to clear melody list
+ * UnitTestButton - run unit tests on LinkedListMelody
  * Description: Button classes for the LinkedListMelody Generator
  * 
  */
@@ -20,12 +23,14 @@ import processing.core.PApplet;
 public abstract class MelodyButton extends Button {
 
     LinkedListMelody melody; // the linked list melody to control
+    Boolean changeLoop;
 
     //overload the constructor for the MelodyButton - use the default constructor for h & w & color
     MelodyButton(PApplet main_, LinkedListMelody melody_, String label_,float x_, float y_)
     {
         super(main_, label_, x_, y_); 
         melody = melody_;
+        changeLoop = false;
     } 
 }
 
@@ -61,7 +66,7 @@ class StopButton extends MelodyButton {
     // start the melody
     public void onPress()
     {
-        melody.start();
+        melody.stop();
     }
 }
 
@@ -80,22 +85,23 @@ class LoopButton extends MelodyButton {
     // start the melody
     public void onPress()
     {
-        melody.start();
+        changeLoop = !changeLoop;
+        melody.loop(changeLoop);
+        melody.play();
     }
 }
 
-// maybe the add melody one for midi files plus add that, weave, unit, and special at top as well !!!!!!!
-
-
 // ------
-//* WeaveButton - Weave option for the LinkedListMelody // CHECK
+//* WeaveButton - Weave option for the LinkedListMelody
 // -------
 class WeaveButton extends MelodyButton {
     private int option; // Different options for weaving
+  //  private MelodyManager melodyManager;
 
     WeaveButton(PApplet main_, LinkedListMelody melody_, int option_, float x_, float y_) {
         super(main_, melody_, "Weave Option " + option_, x_, y_);
         this.option = option_;
+       // me
     }
 
     public void onPress() {

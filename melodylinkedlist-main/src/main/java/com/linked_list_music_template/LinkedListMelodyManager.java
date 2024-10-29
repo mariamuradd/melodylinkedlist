@@ -1,7 +1,7 @@
 /*
- * c3 10/24/2024 Maria Murad
+ * c3 10/28/2024 Maria Murad
  * Class: LinkedListMelodyManager
- * Description (CHANGE!) This class manages a collection of melodies represented by MIDI files. Allows for the playback of multiple melodies, including the ability to play specific melodies and check if a melody is done playing.
+ * Description: This class manages and plays a collection of melodies from MIDI files, with the ability to handle multiple tracks simultaneously. It initializes melodies from a predefined set of files, allowing for playback and printing of each melody’s details.
  */
 
 package com.linked_list_music_template;
@@ -15,7 +15,7 @@ public class LinkedListMelodyManager extends MelodyManager implements Drawable{
     static String prependPath = "mid" + sys.getSeparator();
     static String appendType = ".mid";
 
-    String[] files = {"motive1Am", "motive2Am", "motive3Am", "motive1E", "motive2E", "motive3E"};
+    String[] files = {"Accordion", "Alto", "Bassoon", "Contrabass", "Electric_Guitar", "Piano" , "Pipe_Organ", "Tuba", "Violoncello"};
 
     LinkedListMelodyManager(){
 
