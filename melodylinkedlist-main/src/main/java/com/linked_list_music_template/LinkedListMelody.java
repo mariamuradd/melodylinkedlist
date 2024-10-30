@@ -8,7 +8,7 @@
 package com.linked_list_music_template;
 
 public class LinkedListMelody implements Drawable {
-   
+
     MelodyNode header;
     MelodyNode curMelodyNode;
     private boolean isLooping = false;
@@ -23,11 +23,11 @@ public class LinkedListMelody implements Drawable {
         MelodyNode current = header;
         System.out.print("Melody: ");
 
-        //prints all nodes but the last one without comma at the end
+        // prints all nodes but the last one without comma at the end
         while (current != null) {
             System.out.print(current.getMelodyIndex());
             current = current.getNext();
-            if(current != null){
+            if (current != null) {
                 System.out.print(", "); // this will add a comma if there is another node
             }
         }
@@ -79,7 +79,7 @@ public class LinkedListMelody implements Drawable {
     }
 
     // method is controlling looping
-    public void loop(boolean loop_){
+    public void loop(boolean loop_) {
         isLooping = loop_;
     }
 
@@ -89,26 +89,25 @@ public class LinkedListMelody implements Drawable {
             System.out.println("No melody to play.");
             return;
         }
-        curMelodyNode = header;
-        System.out.println(curMelodyNode);
-        while(curMelodyNode != null ) {
-            // Check if we’re at the end of the list
+
+        // If there is a current playing node
+        if (curMelodyNode != null) {
+            // Check if the current node has ended
             if (curMelodyNode.atEnd()) {
-                if (isLooping) {
-                    curMelodyNode = header; // Reset to beginning
-                    curMelodyNode.start();  // Start from beginning
-                } else {
-                    curMelodyNode = null; // Stop playback
-                }
-            } else {
-                // Move to the next node and start it
+                // Move to the next node
                 curMelodyNode = curMelodyNode.getNext();
+
+                // If the next node is not null, start the next melody node
                 if (curMelodyNode != null) {
                     curMelodyNode.start();
                 }
+                // If the next node is null and looping is enabled, restart playback
+                else if (isLooping) {
+                    start(); // Calls start() to reset and begin playback from the header
+                }
             }
         }
-        
+
     }
 
     // Stop the playback of melodies
@@ -125,18 +124,29 @@ public class LinkedListMelody implements Drawable {
         }
 
         MelodyNode current = header;
-        int index = 0; // first node in list starting
+        int skipCount = 0; // first node in list starting
 
-        while (current != null && count > 0) {
-            for (int i = 0; i < skip && current != null; i++) {
+        while (current != null && skipCount<skip) {
+            for (int i = 1; i < count && current != null; i++) {
                 current = current.getNext();
-                index++;
+            
             }
-
-            if (current != null) {
-                insert(index, new MelodyNode(node.melodyManager, node.getMelodyIndex()));
-                count--;
-            }
+            if(current==null) break;
+            MelodyNode temp = current.getNext();
+            MelodyNode newNode = new MelodyNode(node.melodyManager, node.getMelodyIndex());
+            current.setNext(newNode);
+            newNode.setNext(temp);
+            current = newNode;
+            current = newNode.getNext();
+            skipCount++;
+            // if (current != null) {
+            //     
+            //     insert(index, newNode);
+            //     count--;
+            //     index++;
+            //     current = newNode.getNext();
+            // }
+            
         }
     }
 
@@ -173,9 +183,10 @@ public class LinkedListMelody implements Drawable {
         while (current != null) {
             if (current.getMelodyIndex() == targetNode.getMelodyIndex()) {
                 MelodyNode temp = current.getNext();
-                current.setNext(newNode); 
-                newNode.setNext(temp); 
-                newNode = new MelodyNode(newNode.melodyManager, newNode.getMelodyIndex()); // Create a new instance for the next insertion
+                current.setNext(newNode);
+                newNode.setNext(temp);
+               // newNode = new MelodyNode(newNode.melodyManager, newNode.getMelodyIndex()); // Create a new instance for
+                                                                                           // the next insertion
             }
             current = current.getNext();
         }
@@ -184,7 +195,7 @@ public class LinkedListMelody implements Drawable {
     // melody played in draw
     public void draw() {
         if (header != null) {
-          // play();
+            play();
         }
     }
 

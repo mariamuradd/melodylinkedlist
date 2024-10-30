@@ -21,9 +21,10 @@ public class WeaveUnitTest {
 
     // testing weave method with first case
     public void testWeave1(){
-        MelodyNode node3 = new MelodyNode(manager,3);
+       melodyList = new LinkedListMelody();
         for(int i = 0; i<12; i++){
-            melodyList.addAfterMelody(node3, new MelodyNode(manager, 3));
+            //melodyList.addAfterMelody(node3, new MelodyNode(manager, 3));
+            melodyList.insertAtEnd(new MelodyNode(manager,3));
         }
 
         // now have to weave node with index 0 3 times every 4 nodes
@@ -38,9 +39,9 @@ public class WeaveUnitTest {
 
     // testing weave method with case where count skip 
     public void testWeave2(){
-        MelodyNode node3 = new MelodyNode(manager, 3);
+        melodyList = new LinkedListMelody();
         for(int i = 0; i < 12; i++){
-            melodyList.addAfterMelody(node3, new MelodyNode(manager, 3));
+            melodyList.insertAtEnd(new MelodyNode(manager,3));
         }
 
         // weaving node with index 0 5 times every 10 nodes

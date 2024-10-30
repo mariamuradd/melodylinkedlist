@@ -87,7 +87,6 @@ class LoopButton extends MelodyButton {
     {
         changeLoop = !changeLoop;
         melody.loop(changeLoop);
-        melody.play();
     }
 }
 
