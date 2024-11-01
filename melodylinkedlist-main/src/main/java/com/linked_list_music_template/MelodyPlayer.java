@@ -1,13 +1,15 @@
 /*
- * c3 10/28/24 Maria Murad
+ * c3 - Courtney Brown - Maria Murad
+ * 11/4/2024
  * Class: MelodyPlayer
- * Description: The class class manages the playback of a MIDI melody, sending note sequences with accurate timing and polyphony to an external MIDI bus for performance.
+ * Description: Sends a melody of midi notes to an external player/midi channel, revised 2024 for polyphonic playing
  * 
  */
 
  package com.linked_list_music_template;
- 
-import java.util.*;
+
+
+ import java.util.*;
 
 // send the MIDI elsewhere to play the notes
 public class MelodyPlayer {
@@ -168,6 +170,23 @@ public class MelodyPlayer {
 			}
 		}
 	}
+
+	public void noteOffAllNotes()
+	{
+		//TODO: implement
+	}
+
+	public ArrayList<Double> getRhythm() {
+		return rhythm;
+	}
+
+	public ArrayList<Integer> getMelody() {
+		return melody;
+	}
+
+	public ArrayList<Double> getStartTimes() {
+		return startTimes;
+	}
 	
 	//reset note to 0
 	void reset() {
@@ -189,15 +208,16 @@ public class MelodyPlayer {
 		playingTimes.clear();
 	}
 
-	ArrayList<Integer> getMelody()
-	{
-		return melody;
-	}
-
 	//have we reached the end of the melody?
 	boolean atEndOfMelody()
 	{
 												//reminder to fix this
 		return note_index >= melody.size() && playingRhythms.size()<=0 ;
+	}
+
+	//send note offs for all playing notes
+	void stopAllNotes()
+	{
+		sendNoteOff(Double.MAX_VALUE);
 	}
 }

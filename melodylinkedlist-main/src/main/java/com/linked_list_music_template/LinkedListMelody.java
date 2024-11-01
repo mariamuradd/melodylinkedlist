@@ -9,9 +9,11 @@ package com.linked_list_music_template;
 
 public class LinkedListMelody implements Drawable {
 
+    private TreeMelody treeMelody; // this is the reference to TreeMelody class so melody can generate
     MelodyNode header;
     MelodyNode curMelodyNode;
     private boolean isLooping = false;
+
 
     // Print all melody nodes in the list
     public void print() {
