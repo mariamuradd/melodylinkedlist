@@ -11,7 +11,6 @@ package com.linked_list_music_template;
 //importing the JMusic stuff
 import jm.music.data.*;
 import jm.util.*;
-//import FileSystem for cross-platform file referencing
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.util.ArrayList;
@@ -47,14 +46,16 @@ public class App extends PApplet {
     {
         size(500, 500);
         manager.setup();
-        //addNodes();
         setupButtons();
         addMelodyDraw();
-        //melody.print();
 
-      //  manager.print();
+        // training tree with melodies
+        melody.train();
 
-        //in another function, setup your linked list and add it to the draws.
+      //printing tree structure
+      melody.print();
+
+        
     }
 
     public void addMelodyDraw(){
@@ -89,7 +90,7 @@ public class App extends PApplet {
         draws.add(loop);
         presses.add(loop);
 
-        //fix spacing
+    
         WeaveButton weave = new WeaveButton(this, melody, 1, centerX, spacer+50);
         draws.add(weave);
         presses.add(weave);
@@ -100,12 +101,10 @@ public class App extends PApplet {
         draws.add(weave2);
         presses.add(weave2);
 
-        //fix spacing
         SpecialButton custom = new SpecialButton(this, melody, centerY, spacer*2+centerY+40);
         draws.add(custom);
         presses.add(custom);
 
-        //fix spacing
         UnitTestButton test = new UnitTestButton(this, melody, centerY, spacer);
         draws.add(test);
         presses.add(test);

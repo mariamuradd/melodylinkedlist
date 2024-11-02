@@ -1,5 +1,5 @@
 /*
- * c3 10/28/2024 Maria Murad
+ * c3 11/4/2024 Maria Murad
  * Class: MelodyNode
  * Description: This class represents a node in a linked list of melodies. Each node holds a reference to a specific melody in the MelodyManager which is identified by an index. The melody can play when triggered. 
  */

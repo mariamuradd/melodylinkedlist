@@ -1,5 +1,5 @@
 /*
- * c3 10/28/2024
+ * c3 11/4/2024
  * Maria Murad using a template by Dr. Courtney Brown
  * Class: LinkedListMelody
  * Description: This class is a linked list structure for managing and playing sequences of melody nodes from MelodyNode. It also supports common operations like insertion, deletion, playback with looping, reversing, and adding nodes after specific melodies.

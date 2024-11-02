@@ -1,3 +1,9 @@
+/*
+ * c3 11/4/2024
+ * Maria Murad
+ * Class: TreeMelody
+ * Description: This class represents a tree-structured melody sequence where each node holds a series of MIDI pitches. There are also different methods provided to train the tree with melody data, clear/print the tree as well as manage playback functionality (with play, start, loop or stop).
+ */
 package com.linked_list_music_template;
 
 import java.util.ArrayList;
@@ -5,10 +11,7 @@ import java.util.Random;
 
 public class TreeMelody extends LinkedListMelody {
 
-    // Root node, cast from inherited 'head' to TreeMelodyNode
     TreeMelodyNode root;
-    
-    // Manager that controls this TreeMelody instance
     TreeMelodyManager manager;
 
     // Constructor
@@ -43,7 +46,8 @@ public class TreeMelody extends LinkedListMelody {
         }
     
         for (int i = 0; i < manager.melodySize(); i++) {
-            TreeMelodyNode node = new TreeMelodyNode(manager.getMelody(i)); // ERROR HERE
+            ArrayList<Integer> melodyPicthes = manager.getMelodyPitches(i);
+            TreeMelodyNode node = new TreeMelodyNode(melodyPicthes);
             motives.add(node);
         }
     
@@ -62,7 +66,7 @@ public class TreeMelody extends LinkedListMelody {
 
     // train method with defaults
     void train() {
-        train(-1, 4);  // call the train method with default index -1 & motiveNoteCount to 4
+        train(0, 4);  // call the train method with default index 0 & motiveNoteCount to 4
     }
 
     // Start playing the melody
