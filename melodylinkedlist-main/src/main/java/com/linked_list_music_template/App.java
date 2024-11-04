@@ -34,6 +34,7 @@ public class App extends PApplet {
     ArrayList<Drawable> draws = new ArrayList<>(); 
 
     TreeMelodyManager manager = new TreeMelodyManager();
+    //LinkedListMelody treeMelody = new LinkedListMelody(manager);
     TreeMelody melody = new TreeMelody(manager); 
     
 
@@ -50,10 +51,10 @@ public class App extends PApplet {
         addMelodyDraw();
 
         // training tree with melodies
-        melody.train();
+       //manager.print();
 
       //printing tree structure
-      melody.print();
+     //melody.print();
 
         
     }
@@ -90,17 +91,16 @@ public class App extends PApplet {
         draws.add(loop);
         presses.add(loop);
 
-    
-        WeaveButton weave = new WeaveButton(this, melody, 1, centerX, spacer+50);
-        draws.add(weave);
-        presses.add(weave);
-        WeaveButton weave1 = new WeaveButton(this, melody, 2, centerX, spacer+90);
-        draws.add(weave1);
-        presses.add(weave1);
-        WeaveButton weave2 = new WeaveButton(this, melody, 3, centerX, spacer+150);
-        draws.add(weave2);
-        presses.add(weave2);
+        RetrainMelodyButton retrainMelody = new RetrainMelodyButton(this, melody, treeMelody, centerX, centerY + 4 * spacer);
+        draws.add(retrainMelody);
+        presses.add(retrainMelody);
 
+        RetrainMelodyAtZeroButton retrainMelodyAtZero = new RetrainMelodyAtZeroButton(this, melody, treeMelody, centerX, centerY + 5 * spacer);
+        draws.add(retrainMelodyAtZero);
+        presses.add(retrainMelodyAtZero);
+
+    
+        // clears list
         SpecialButton custom = new SpecialButton(this, melody, centerY, spacer*2+centerY+40);
         draws.add(custom);
         presses.add(custom);

@@ -91,34 +91,37 @@ class LoopButton extends MelodyButton {
 }
 
 // ------
-//* WeaveButton - Weave option for the LinkedListMelody
+//* RetrainMelodyButton - 
 // -------
-class WeaveButton extends MelodyButton {
-    private int option; // Different options for weaving
-  //  private MelodyManager melodyManager;
+class RetrainMelodyButton extends Button 
+{
+    TreeMelody treeMelody;
 
-    WeaveButton(PApplet main_, LinkedListMelody melody_, int option_, float x_, float y_) {
-        super(main_, melody_, "Weave Option " + option_, x_, y_);
-        this.option = option_;
-       // me
+    RetrainMelodyButton(PApplet main_, LinkedListMelody melody_, TreeMelody treeMelody_, float x_, float y_) {
+        super(main_, "Retrain Melody", x_, y_);
+        this.treeMelody = treeMelody_;
+    }
+
+    public void onPress() 
+    {
+        treeMelody.train(4, (int) (Math.random() * treeMelody.getMelodyManager().size()));
+    }
+}
+// ----------
+//* RetrainMelodyAtZeroButton -
+// ----------
+class RetrainMelodyAtZeroButton extends Button 
+{
+    TreeMelody treeMelody;
+
+    RetrainMelodyAtZeroButton(PApplet main_, LinkedListMelody melody_, TreeMelody treeMelody_, float x_, float y_) 
+    {
+        super(main_, "Retrain Melody at 0", x_, y_);
+        this.treeMelody = treeMelody_;
     }
 
     public void onPress() {
-        MelodyNode node = new MelodyNode(null, 0); // New node for weaving with a default melody
-        switch (option) {
-            case 1:
-                melody.weave(node, 3, 4); // Customize parameters as needed
-                break;
-            case 2:
-                melody.weave(node, 5, 2);
-                break;
-            case 3:
-                melody.weave(node, 4, 6);
-                break;
-            default:
-                System.out.println("Invalid weave option.");
-        }
-        System.out.println("Weave option " + option + " applied.");
+        treeMelody.train(4, 0);
     }
 }
 

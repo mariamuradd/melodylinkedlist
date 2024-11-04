@@ -26,15 +26,6 @@ public class TreeMelodyNode extends MelodyNode {
         midiNotes = new ArrayList<>();
     }
 
-    // this is a constructor that accepts an ArrayList<Integer> for the midi pitches
-TreeMelodyNode(ArrayList<Integer> midiNotes){
-    super(null, 0);
-    nodes = new ArrayList<>();
-    this.midiNotes = midiNotes;
-}
-
-
-
     // this method allows to add next nodes to the tree based on matching melody pitches
     public void addNextNodes(ArrayList<TreeMelodyNode> motives) {
         ArrayList<TreeMelodyNode> nodesToAdd = new ArrayList<>();
@@ -80,21 +71,6 @@ public void print(int spacesBefore, int index) {
         nodes.get(i).print(spacesBefore + 2, i);       
     }
 }
-
-    // print method for tree formatting
-    //public void print(int spacesBefore) {
-       // System.out.print(" ".repeat(spacesBefore));
-        //System.out.print("-- ");
-
-        // prints MIDI notes
-        //System.out.print("MIDI Notes: " + midiNotes);
-        //System.out.println();
-
-        // adds indentation to printed files
-        //for (TreeMelodyNode node : nodes) {
-           // node.print(spacesBefore + 2);
-        //}
-    //}
 
     // overloaded print method, calls with 0 spaces for root node
     public void print() {

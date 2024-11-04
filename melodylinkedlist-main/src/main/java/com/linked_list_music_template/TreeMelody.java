@@ -18,7 +18,7 @@ public class TreeMelody extends LinkedListMelody {
     public TreeMelody(TreeMelodyManager manager) {
         super();
         this.manager = manager;
-        this.root = (TreeMelodyNode) header;  // Cast head to TreeMelodyNode if necessary
+        this.root = (TreeMelodyNode) header;
     }
 
     // Traverse & print the contents of the tree

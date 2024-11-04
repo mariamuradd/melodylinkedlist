@@ -21,13 +21,12 @@ public class TreeMelodyManager extends MelodyManager implements Drawable {
 
     //changed 
     float tempo = 120; 
-    String bus = "Bus 1"; //you need to make this match your own code / platform
+    String bus = "Microsoft GS Wavetable Synth";
 
 
-    //String[] files = {"motive1Am", "motive2Am", "motive3Am", "motive1E", "motive2E", "motive3E", "MaryHadALittleLamb"};
-    //String[] files = { "bwv799" };
     String[] files = {"MaryHadALittleLamb"};
 
+    
     TreeMelodyManager()
     {
         super();
@@ -143,23 +142,18 @@ public class TreeMelodyManager extends MelodyManager implements Drawable {
         return newPlayers; 
     }
 
-    //reparses all the files into melodies (ie, motives) with noteCount notes (or less)
-    ArrayList<TreeMelodyNode> convertToMotivesAndReplace(int noteCount)
-    {
+    void convertToMotivesAndReplace(int noteCount){
         players = convertToMotives(noteCount);
-        return null;
     }
 
-    //returns the melody (ie, midi pitch numbers) for player at index i -- for debugging
-    String melodyToString(int i)
+    String melodyToString(int i) 
     {
-        ArrayList<Integer> pitches = players.get(i).getMelody(); 
-        return pitches.toString(); 
+        ArrayList<Integer> pitches = players.get(i).getMelody();
+        return pitches.toString();
     }
 
-    //returns all the start times of the melody in a string for player at index i -- for debugging
     String startTimesToString(int i)
-    {
+     {
         return players.get(i).getStartTimes().toString();
     }
 
@@ -185,5 +179,27 @@ public class TreeMelodyManager extends MelodyManager implements Drawable {
     public void draw()
     {
         playMelodies();
+    }
+
+    public MelodyPlayer getPlayer(int index) {
+        return players.get(index);
+    }
+
+    public int size() {
+        return players.size();
+    }
+
+    public void print() 
+    {
+        StringBuilder melodyOutput = new StringBuilder("Tree Melody Manager: ");
+        for (int i = 0; i < players.size(); i++) 
+        {
+            melodyOutput.append("Melody ").append(i).append(", ");
+        }
+        if (melodyOutput.length() > 0) 
+        {
+            melodyOutput.setLength(melodyOutput.length() - 2);
+        }
+        System.out.println(melodyOutput.toString());
     }
 }
