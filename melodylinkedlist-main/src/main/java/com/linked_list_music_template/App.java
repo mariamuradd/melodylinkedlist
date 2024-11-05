@@ -34,8 +34,9 @@ public class App extends PApplet {
     ArrayList<Drawable> draws = new ArrayList<>(); 
 
     TreeMelodyManager manager = new TreeMelodyManager();
-    //LinkedListMelody treeMelody = new LinkedListMelody(manager);
-    TreeMelody melody = new TreeMelody(manager); 
+    LinkedListMelody melody = new LinkedListMelody(); 
+    TreeMelody treeMelody = new TreeMelody(manager);
+
     
 
     public static void main(String[] args) {
@@ -45,18 +46,13 @@ public class App extends PApplet {
     //setup stuff that should be done before Processing code is called
     public void settings()
     {
-        size(500, 500);
+        size(800, 800);
         manager.setup();
         setupButtons();
         addMelodyDraw();
+        manager.print();
+        melody.print();
 
-        // training tree with melodies
-       //manager.print();
-
-      //printing tree structure
-     //melody.print();
-
-        
     }
 
     public void addMelodyDraw(){
@@ -91,11 +87,16 @@ public class App extends PApplet {
         draws.add(loop);
         presses.add(loop);
 
-        RetrainMelodyButton retrainMelody = new RetrainMelodyButton(this, melody, treeMelody, centerX, centerY + 4 * spacer);
+        PrintMelodyButton printMelody = new PrintMelodyButton(this, melody, centerX, centerY + 3 * spacer);
+        draws.add(printMelody);
+        presses.add(printMelody);
+
+        // RetrainMelodyButton retrainMelody = new RetrainMelodyButton(this, treeMelody, centerX, centerY + 4 * spacer);
+        RetrainMelodyButton retrainMelody = new RetrainMelodyButton(this,treeMelody,centerX,centerY + 4*spacer);
         draws.add(retrainMelody);
         presses.add(retrainMelody);
 
-        RetrainMelodyAtZeroButton retrainMelodyAtZero = new RetrainMelodyAtZeroButton(this, melody, treeMelody, centerX, centerY + 5 * spacer);
+        RetrainMelodyAtZeroButton retrainMelodyAtZero = new RetrainMelodyAtZeroButton(this, treeMelody, centerX, centerY + 5 * spacer);
         draws.add(retrainMelodyAtZero);
         presses.add(retrainMelodyAtZero);
 

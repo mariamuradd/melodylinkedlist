@@ -26,6 +26,7 @@ public class TreeMelodyNode extends MelodyNode {
         midiNotes = new ArrayList<>();
     }
 
+    
     // this method allows to add next nodes to the tree based on matching melody pitches
     public void addNextNodes(ArrayList<TreeMelodyNode> motives) {
         ArrayList<TreeMelodyNode> nodesToAdd = new ArrayList<>();

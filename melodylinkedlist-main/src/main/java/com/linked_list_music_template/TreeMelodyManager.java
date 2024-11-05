@@ -142,8 +142,9 @@ public class TreeMelodyManager extends MelodyManager implements Drawable {
         return newPlayers; 
     }
 
-    void convertToMotivesAndReplace(int noteCount){
+    ArrayList<MelodyPlayer> convertToMotivesAndReplace(int noteCount){
         players = convertToMotives(noteCount);
+        return players;
     }
 
     String melodyToString(int i) 

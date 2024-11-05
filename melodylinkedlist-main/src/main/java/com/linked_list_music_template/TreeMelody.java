@@ -39,7 +39,8 @@ public class TreeMelody extends LinkedListMelody {
 
     // train method to create a melody tree with the specified index in MelodyManager
     void train(int index, int motiveNoteCount) {
-        ArrayList<TreeMelodyNode> motives = manager.convertToMotivesAndReplace(motiveNoteCount);
+        manager.convertToMotivesAndReplace(motiveNoteCount);
+        ArrayList<TreeMelodyNode> motives  = new ArrayList<>();
     
         if (index == -1) {
             index = new Random().nextInt(manager.melodySize());
@@ -47,7 +48,7 @@ public class TreeMelody extends LinkedListMelody {
     
         for (int i = 0; i < manager.melodySize(); i++) {
             ArrayList<Integer> melodyPicthes = manager.getMelodyPitches(i);
-            TreeMelodyNode node = new TreeMelodyNode(melodyPicthes);
+            TreeMelodyNode node = new TreeMelodyNode(manager, i);
             motives.add(node);
         }
     
@@ -96,5 +97,9 @@ public class TreeMelody extends LinkedListMelody {
     public void play() {
         System.out.println("Playing melody.");
         // Add play logic if required
+    }
+
+    public TreeMelodyManager getTreeMelodyManager(){
+        return manager;
     }
 }

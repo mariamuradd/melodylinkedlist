@@ -90,6 +90,23 @@ class LoopButton extends MelodyButton {
     }
 }
 
+class PrintMelodyButton extends Button 
+{
+    LinkedListMelody melody;
+
+    PrintMelodyButton(PApplet main_, LinkedListMelody melody_, float x_, float y_) 
+    {
+        super(main_, "Print Melody", x_, y_);
+
+        melody = melody_;
+    }
+
+    public void onPress() 
+    {
+        melody.print();
+    }
+}
+
 // ------
 //* RetrainMelodyButton - 
 // -------
@@ -97,14 +114,14 @@ class RetrainMelodyButton extends Button
 {
     TreeMelody treeMelody;
 
-    RetrainMelodyButton(PApplet main_, LinkedListMelody melody_, TreeMelody treeMelody_, float x_, float y_) {
+    RetrainMelodyButton(PApplet main_,  TreeMelody treeMelody2, float x_, float y_) {
         super(main_, "Retrain Melody", x_, y_);
-        this.treeMelody = treeMelody_;
+        this.treeMelody = treeMelody2;
     }
 
     public void onPress() 
     {
-        treeMelody.train(4, (int) (Math.random() * treeMelody.getMelodyManager().size()));
+        treeMelody.train(4, (int) (Math.random() * treeMelody.getTreeMelodyManager().size()));
     }
 }
 // ----------
@@ -114,7 +131,7 @@ class RetrainMelodyAtZeroButton extends Button
 {
     TreeMelody treeMelody;
 
-    RetrainMelodyAtZeroButton(PApplet main_, LinkedListMelody melody_, TreeMelody treeMelody_, float x_, float y_) 
+    RetrainMelodyAtZeroButton(PApplet main_,  TreeMelody treeMelody_, float x_, float y_) 
     {
         super(main_, "Retrain Melody at 0", x_, y_);
         this.treeMelody = treeMelody_;
