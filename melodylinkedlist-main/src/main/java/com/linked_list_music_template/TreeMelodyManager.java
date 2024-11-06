@@ -24,7 +24,7 @@ public class TreeMelodyManager extends MelodyManager implements Drawable {
     String bus = "Microsoft GS Wavetable Synth";
 
 
-    String[] files = {"MaryHadALittleLamb"};
+    String[] files = {"LongFile"};
 
     
     TreeMelodyManager()

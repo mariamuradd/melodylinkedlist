@@ -25,8 +25,13 @@ public class TreeMelodyNode extends MelodyNode {
         nodes = new ArrayList<>();
         midiNotes = new ArrayList<>();
     }
+    TreeMelodyNode(MelodyManager melodyManager, int whichMelody,ArrayList<Integer> midiNotes){
+        super(melodyManager, whichMelody); // Explicit call to MelodyNode's constructor
+        nodes = new ArrayList<>();
+        this.midiNotes = midiNotes;
+    }
 
-    
+
     // this method allows to add next nodes to the tree based on matching melody pitches
     public void addNextNodes(ArrayList<TreeMelodyNode> motives) {
         ArrayList<TreeMelodyNode> nodesToAdd = new ArrayList<>();
@@ -52,7 +57,7 @@ public class TreeMelodyNode extends MelodyNode {
 
     // overriding here becasue I want getNext to return a random child node
     @Override
-    public MelodyNode getNext() {
+    public TreeMelodyNode getNext() {
         if (nodes.isEmpty()) return null;
         return nodes.get(new Random().nextInt(nodes.size()));
     }

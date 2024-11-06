@@ -52,6 +52,7 @@ public class App extends PApplet {
         addMelodyDraw();
         manager.print();
         melody.print();
+        treeMelody.train(0, 4);
 
     }
 
@@ -75,7 +76,7 @@ public class App extends PApplet {
         float centerY = height/2; 
         float spacer = 50;
 
-        PlayButton play = new PlayButton(this, melody, centerX, centerY);
+        PlayButton play = new PlayButton(this, treeMelody, centerX, centerY);
         draws.add(play);
         presses.add(play);
 
@@ -87,26 +88,26 @@ public class App extends PApplet {
         draws.add(loop);
         presses.add(loop);
 
-        PrintMelodyButton printMelody = new PrintMelodyButton(this, melody, centerX, centerY + 3 * spacer);
+        PrintMelodyButton printMelody = new PrintMelodyButton(this, melody, centerX, spacer*2+centerY+70);
         draws.add(printMelody);
         presses.add(printMelody);
 
         // RetrainMelodyButton retrainMelody = new RetrainMelodyButton(this, treeMelody, centerX, centerY + 4 * spacer);
-        RetrainMelodyButton retrainMelody = new RetrainMelodyButton(this,treeMelody,centerX,centerY + 4*spacer);
+        RetrainMelodyButton retrainMelody = new RetrainMelodyButton(this,treeMelody,centerX,centerY + 5*spacer);
         draws.add(retrainMelody);
         presses.add(retrainMelody);
 
-        RetrainMelodyAtZeroButton retrainMelodyAtZero = new RetrainMelodyAtZeroButton(this, treeMelody, centerX, centerY + 5 * spacer);
+        RetrainMelodyAtZeroButton retrainMelodyAtZero = new RetrainMelodyAtZeroButton(this, treeMelody, centerX, centerY + 7 * spacer);
         draws.add(retrainMelodyAtZero);
         presses.add(retrainMelodyAtZero);
 
     
         // clears list
-        SpecialButton custom = new SpecialButton(this, melody, centerY, spacer*2+centerY+40);
+        SpecialButton custom = new SpecialButton(this, melody, centerX, spacer*2+centerY+40);
         draws.add(custom);
         presses.add(custom);
 
-        UnitTestButton test = new UnitTestButton(this, melody, centerY, spacer);
+        TestMelodyTreeTest test = new TestMelodyTreeTest(this, treeMelody, centerY, spacer);
         draws.add(test);
         presses.add(test);
 

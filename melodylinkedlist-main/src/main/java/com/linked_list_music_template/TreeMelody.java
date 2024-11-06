@@ -13,6 +13,8 @@ public class TreeMelody extends LinkedListMelody {
 
     TreeMelodyNode root;
     TreeMelodyManager manager;
+    boolean isPlaying = false;  
+    boolean isLooping = false;  
 
     // Constructor
     public TreeMelody(TreeMelodyManager manager) {
@@ -36,22 +38,28 @@ public class TreeMelody extends LinkedListMelody {
         header = null;
         System.out.println("Tree has been cleared.");
     }
-
+   
+    public void setRoot(TreeMelodyNode root){
+        this.root = root;
+    }
+    public void setManager(TreeMelodyManager treeMelodyManager){
+        manager = treeMelodyManager;
+    }
     // train method to create a melody tree with the specified index in MelodyManager
     void train(int index, int motiveNoteCount) {
         manager.convertToMotivesAndReplace(motiveNoteCount);
         ArrayList<TreeMelodyNode> motives  = new ArrayList<>();
-    
         if (index == -1) {
             index = new Random().nextInt(manager.melodySize());
         }
-    
-        for (int i = 0; i < manager.melodySize(); i++) {
-            ArrayList<Integer> melodyPicthes = manager.getMelodyPitches(i);
-            TreeMelodyNode node = new TreeMelodyNode(manager, i);
-            motives.add(node);
+        int count=0;
+        for( MelodyPlayer melodyPlayer:manager.players){
+               melodyPlayer.getMelody();
+              TreeMelodyNode  treeNode = new TreeMelodyNode(manager, count,melodyPlayer.getMelody());
+              motives.add(treeNode);
+              count++;
         }
-    
+      
         if (root == null) {
             root = motives.get(index);
         }
@@ -70,33 +78,56 @@ public class TreeMelody extends LinkedListMelody {
         train(0, 4);  // call the train method with default index 0 & motiveNoteCount to 4
     }
 
-    // Start playing the melody
+    //Start playing the melody
     public void start() {
         System.out.println("Starting melody playback.");
-        // Add playback logic if required
-    }
-
-    // Deprecated weave function
-    void weave() {
-        System.out.println("Warning: weave() function is deprecated and not used.");
+        isPlaying = true;
+        isLooping = false;
+        play();
+        
     }
 
     // Loop the melody
     void loop() {
         System.out.println("Looping melody.");
-        // Add looping logic if required
+        isPlaying = true;
+        isLooping = true;
+        play();
     }
 
     // Stop the melody
     public void stop() {
         System.out.println("Stopping melody playback.");
-        // Add stopping logic if required
+        isPlaying = false;
+        isLooping = false;
     }
 
     // Play the melody
     public void play() {
-        System.out.println("Playing melody.");
-        // Add play logic if required
+        if (!isPlaying) {
+            System.out.println("Playback is stopped.");
+            return;
+        }
+
+        TreeMelodyNode currentNode = root;
+        while (isPlaying && currentNode != null) {
+            currentNode.start();
+
+            while (!currentNode.atEnd() && isPlaying) {
+        
+            }
+
+            currentNode = currentNode.getNext();  
+
+            if (currentNode == null && isLooping) {
+                currentNode = root;  
+            }
+        }
+
+        if (!isLooping) {
+            stop();  
+        }
+
     }
 
     public TreeMelodyManager getTreeMelodyManager(){

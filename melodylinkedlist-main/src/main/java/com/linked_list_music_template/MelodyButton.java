@@ -38,17 +38,20 @@ public abstract class MelodyButton extends Button {
 //* PlayButton - play the MelodyLinkedList
 // -------
 class PlayButton extends MelodyButton {
+    TreeMelody melody;
 
     //overload the constructor for the MelodyButton - use the default constructor for h & w & color
-    PlayButton(PApplet main_, LinkedListMelody melody_,float x_, float y_)
+    PlayButton(PApplet main_, TreeMelody melody_,float x_, float y_)
     {
         super(main_, melody_,"Play", x_, y_); 
+        melody = melody_;
     } 
 
     // start the melody
     public void onPress()
     {
         melody.start();
+        melody.play();
     }
 }
 
@@ -171,5 +174,24 @@ class UnitTestButton extends MelodyButton {
         test.testWeave1();
         test.testWeave2();
         System.out.println("Unit tests completed.");
+    }
+}
+
+class TestMelodyTreeTest extends MelodyButton{
+    TreeMelody treeMelody;
+    TestMelodyTreeTest(PApplet main_, TreeMelody melody_, float x_, float y_) {
+        super(main_, melody_,"Tree Test", x_, y_);
+        treeMelody = melody_;
+    }
+    public void onPress(){
+       TreeMelodyManager manager = new TreeMelodyManager();
+       String[] files = {"MaryHadALittleLamb"};
+       manager.setFiles(files);
+       manager.setup();
+      // manager.convertToMotivesAndReplace()
+      treeMelody.setRoot(null);
+      treeMelody.setManager(manager);
+      treeMelody.train(0,4);
+      treeMelody.print();
     }
 }
